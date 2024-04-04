@@ -1,9 +1,12 @@
 package com.cydeo.service.impl;
 
+import lombok.AllArgsConstructor;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 
 public abstract class AbstractMapService<T, ID> {
 
