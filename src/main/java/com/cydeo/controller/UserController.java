@@ -31,6 +31,7 @@ private final UserService userService;
 
         return "/user/create";
     }
+
     @PostMapping("/create")
     public String insertUser(@ModelAttribute("user")UserDTO user){
 
