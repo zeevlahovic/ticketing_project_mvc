@@ -1,10 +1,10 @@
-package com.cydeo.boostrap;
+package com.zee.boostrap;
 
-import com.cydeo.dto.RoleDTO;
-import com.cydeo.dto.UserDTO;
-import com.cydeo.enums.Gender;
-import com.cydeo.service.RoleService;
-import com.cydeo.service.UserService;
+import com.zee.dto.RoleDTO;
+import com.zee.dto.UserDTO;
+import com.zee.enums.Gender;
+import com.zee.service.RoleService;
+import com.zee.service.UserService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 

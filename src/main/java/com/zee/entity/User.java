@@ -1,6 +1,6 @@
-package com.cydeo.entity;
+package com.zee.entity;
 
-import com.cydeo.enums.Gender;
+import com.zee.enums.Gender;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

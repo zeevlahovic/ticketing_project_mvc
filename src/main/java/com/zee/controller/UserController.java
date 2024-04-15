@@ -1,8 +1,8 @@
-package com.cydeo.controller;
+package com.zee.controller;
 
-import com.cydeo.dto.UserDTO;
-import com.cydeo.service.RoleService;
-import com.cydeo.service.UserService;
+import com.zee.dto.UserDTO;
+import com.zee.service.RoleService;
+import com.zee.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -51,6 +51,14 @@ public class UserController {
     public String updateUser(@ModelAttribute("user") UserDTO user) {
 
         userService.update(user);
+
+        return "redirect:/user/create";
+    }
+
+    @GetMapping("/delete/{username}")
+    public String deleteUser(@PathVariable("username") String username){
+
+        userService.deleteById(username);
 
         return "redirect:/user/create";
     }

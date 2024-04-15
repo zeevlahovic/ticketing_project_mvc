@@ -1,4 +1,4 @@
-package com.cydeo.config;
+package com.zee.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;

@@ -1,8 +1,8 @@
-package com.cydeo.converter;
+package com.zee.converter;
 
 
-import com.cydeo.dto.RoleDTO;
-import com.cydeo.service.RoleService;
+import com.zee.dto.RoleDTO;
+import com.zee.service.RoleService;
 import org.springframework.boot.context.properties.ConfigurationPropertiesBinding;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;

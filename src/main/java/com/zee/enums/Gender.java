@@ -1,4 +1,4 @@
-package com.cydeo.enums;
+package com.zee.enums;
 
 public enum Gender {
 

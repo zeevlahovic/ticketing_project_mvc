@@ -1,6 +1,6 @@
-package com.cydeo.service;
+package com.zee.service;
 
-import com.cydeo.dto.UserDTO;
+import com.zee.dto.UserDTO;
 
 
 

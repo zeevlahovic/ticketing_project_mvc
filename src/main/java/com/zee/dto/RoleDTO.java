@@ -1,4 +1,4 @@
-package com.cydeo.entity;
+package com.zee.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,9 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Role {
+public class RoleDTO {
 
     private Long id;
-    public String description;
+    private String description;
 
 }

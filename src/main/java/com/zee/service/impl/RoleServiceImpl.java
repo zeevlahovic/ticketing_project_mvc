@@ -1,7 +1,7 @@
-package com.cydeo.service.impl;
+package com.zee.service.impl;
 
-import com.cydeo.dto.RoleDTO;
-import com.cydeo.service.RoleService;
+import com.zee.dto.RoleDTO;
+import com.zee.service.RoleService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
