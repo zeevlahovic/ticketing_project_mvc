@@ -3,6 +3,7 @@ package com.cydeo.service.impl;
 import com.cydeo.dto.RoleDTO;
 import com.cydeo.service.RoleService;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
@@ -29,6 +30,6 @@ public class RoleServiceImpl extends AbstractMapService<RoleDTO, Long> implement
 
     @Override
     public void update(RoleDTO object) {
-
+        super.update(object.getId(), object);
     }
 }
