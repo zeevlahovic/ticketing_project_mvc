@@ -40,6 +40,17 @@ private final UserService userService;
         return "redirect:/user/create";
     }
 
+    public String editUser(){
+
+
+
+
+
+        return "";
+    }
+
+
+
 
 
 }
