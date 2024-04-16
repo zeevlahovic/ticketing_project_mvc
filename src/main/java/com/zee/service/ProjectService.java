@@ -1,4 +1,4 @@
-package com.zee.service.impl;
+package com.zee.service;
 
 import com.zee.dto.ProjectDTO;
 import com.zee.service.CrudService;
