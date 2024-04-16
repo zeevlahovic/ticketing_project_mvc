@@ -2,6 +2,7 @@ package com.zee.controller;
 
 
 import com.zee.dto.ProjectDTO;
+import com.zee.dto.UserDTO;
 import com.zee.enums.Status;
 import com.zee.service.ProjectService;
 import com.zee.service.UserService;
@@ -22,19 +23,19 @@ public class ProjectController {
     }
 
     @GetMapping("/create")
-    public String createProject(Model model){
+    public String createProject(Model model) {
 
-        model.addAttribute("project",new ProjectDTO());
+        model.addAttribute("project", new ProjectDTO());
 
-        model.addAttribute("managers",userService.findAll());
+        model.addAttribute("managers", userService.findManagers());
 
-        model.addAttribute("projects",projectService.findAll());
+        model.addAttribute("projects", projectService.findAll());
 
         return "/project/create";
     }
 
     @PostMapping("/create")
-    public String insertProject(@ModelAttribute("project") ProjectDTO project){
+    public String insertProject(@ModelAttribute("project") ProjectDTO project) {
 
 
         projectService.save(project);
@@ -43,9 +44,35 @@ public class ProjectController {
     }
 
     @GetMapping("/delete/{projectCode}")
-    public String deleteProject(@PathVariable("projectCode") String projectCode){
+    public String deleteProject(@PathVariable("projectCode") String projectCode) {
 
         projectService.deleteById(projectCode);
+
+        return "redirect:/project/create";
+    }
+
+    @GetMapping("/complete/{projectCode}")
+    public String completeProject(@PathVariable("projectCode") String projectCode) {
+
+        projectService.complete(projectService.findById(projectCode));
+
+        return "redirect:/project/create";
+    }
+
+    @GetMapping("/update/{projectCode}")
+    public String editProject(@PathVariable("projectCode") String projectCode, Model model) {
+
+        model.addAttribute("project", projectService.findById(projectCode));
+        model.addAttribute("managers", userService.findManagers());
+        model.addAttribute("projects", projectService.findAll());
+
+        return "/project/update";
+    }
+
+    @PostMapping("/update")
+    public String updateProject(@ModelAttribute("project") ProjectDTO project) {
+
+        projectService.update(project);
 
         return "redirect:/project/create";
     }
