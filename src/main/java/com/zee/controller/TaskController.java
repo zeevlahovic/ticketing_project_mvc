@@ -1,6 +1,7 @@
 package com.zee.controller;
 
 import com.zee.dto.TaskDTO;
+import com.zee.enums.Status;
 import com.zee.service.ProjectService;
 import com.zee.service.TaskService;
 import com.zee.service.UserService;
@@ -33,8 +34,9 @@ public class TaskController {
 
         return "task/create";
     }
+
     @PostMapping("/create")
-    public String insertTask(TaskDTO task){
+    public String insertTask(TaskDTO task) {
 
         taskService.save(task);
 
@@ -42,7 +44,7 @@ public class TaskController {
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteTask(@PathVariable("id") Long id){
+    public String deleteTask(@PathVariable("id") Long id) {
 
         taskService.deleteById(id);
 
@@ -50,7 +52,7 @@ public class TaskController {
     }
 
     @GetMapping("/update/{taskId}")
-    public String editTask(@PathVariable("taskId") Long taskId, Model model){
+    public String editTask(@PathVariable("taskId") Long taskId, Model model) {
 
         model.addAttribute("task", taskService.findById(taskId));
         model.addAttribute("projects", projectService.findAll());
@@ -72,11 +74,47 @@ public class TaskController {
     */
 
     @PostMapping("/update/{id}")
-    public String updateTask(TaskDTO task){
+    public String updateTask(TaskDTO task) {
 
         taskService.update(task);
 
         return "redirect:/task/create";
+    }
+
+    @GetMapping("/employee/pending-tasks")
+    public String employeePendingTasks(Model model) {
+
+        model.addAttribute("tasks", taskService.findAllTasksByStatusIsNot(Status.COMPLETE));
+
+        return "/task/pending-tasks";
+    }
+
+    @GetMapping("/employee/archive")
+    public String employeeArchivedTasks(Model model) {
+
+        model.addAttribute("tasks", taskService.findAllTasksByStatus(Status.COMPLETE));
+
+        return "/task/archive";
+    }
+
+    @GetMapping("/employee/edit/{id}")
+    public String employeeEditTask(@PathVariable Long id, Model model) {
+
+        model.addAttribute("task", taskService.findById(id));
+        model.addAttribute("projects", projectService.findAll());
+        model.addAttribute("employees", userService.findEmployees());
+        model.addAttribute("statuses", Status.values());
+        model.addAttribute("tasks",taskService.findAllTasksByStatusIsNot(Status.COMPLETE));
+
+        return "/task/status-update";
+    }
+
+    @PostMapping("/employee/update/{id}")
+    public String employeeUpdateTask(TaskDTO task){
+
+        taskService.updateStatus(task);
+
+        return "redirect:/task/employee/pending-tasks";
     }
 
 }
