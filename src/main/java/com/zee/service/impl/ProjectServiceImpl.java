@@ -64,8 +64,7 @@ public class ProjectServiceImpl extends AbstractMapService<ProjectDTO,String> im
     public List<ProjectDTO> getCountedListOfProjectDTO(UserDTO manager) {
 
         List<ProjectDTO> projectList =
-                findAll()
-                        .stream()
+                findAll().stream()
                         .filter(project -> project.getAssignedManager().equals(manager))  //John
                         .map(project ->{
 
