@@ -4,6 +4,8 @@ import com.zee.dto.UserDTO;
 import com.zee.service.UserService;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -45,4 +47,7 @@ public class UserServiceImpl extends AbstractMapService<UserDTO, String> impleme
         return findAll().stream()
                 .filter(user -> user.getRole().getId() == 3).collect(Collectors.toList());
     }
+
+
+
 }
